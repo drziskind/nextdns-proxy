@@ -29,13 +29,14 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
   nextdns-proxy:
-    image: "terafin/nextdns-proxy:latest"
+    image: "drziskind/nextdns-proxy:latest"
     container_name: nextdns-proxy
     hostname: nextdns-proxy
     labels:
       autoheal: "true"
     ports:
      - "53:53/udp"
+     - "53:53/tcp"
     environment: # Note, these are ALL optional
       NEXTDNS_CONFIG: <<Your NextDNS Config/Endpoint ID here, this can be found on the NextDNS Setup page>
       NEXTDNS_FORWARDING_DOMAIN: <<Your Local DNS Name Here, eg: myfancyhome.net>>
